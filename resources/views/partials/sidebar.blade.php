@@ -14,12 +14,12 @@
         <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Vue Global</span></a>
       </li> --}}
       <li>
-        <a class="nav-link" href="blank.html">
+        <a class="nav-link" href="{{ route("home") }}">
             <i class="fas fa-home""></i><span>Acceuil</span>
         </a>
     </li>
     @can("manager")
-      <li class="dropdown">
+      <li class="dropdown ">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
             data-feather="briefcase"></i><span>Dashboard</span></a>
          <ul class="dropdown-menu">
@@ -35,7 +35,7 @@
       <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i class="fas fa-user-shield"></i><span>Habilitations</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="{{ route('users.index') }}">Utilisateurs</a></li>
+          <li><a class="nav-link" href="{{ route('admin.habilitations.users.index') }}">Utilisateurs</a></li>
           <li><a class="nav-link" href="portfolio.html">Roles et Permissions</a></li>
         </ul>
       </li>

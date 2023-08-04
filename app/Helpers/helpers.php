@@ -1,8 +1,22 @@
 <?php
 
+use Illuminate\Support\Str;
+
 function nomComplet()
 {
     return auth()->user()->prenom . " " . auth()->user()->nom;
+}
+
+function setMenuOpen($route){
+    $routeActuel = request()->route()->getName();
+    if(contains($routeActuel, $route)){
+        return "menu-open";
+    }
+    return "";
+}
+
+function contains($contenair, $contenu){
+    return Str::contains($contenair, $contenu);
 }
 
 function getNomRole(){
