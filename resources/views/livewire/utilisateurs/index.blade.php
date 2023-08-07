@@ -1,9 +1,5 @@
 <div>
-  
-
     @include('livewire.utilisateurs.addUserModal')
-    
-  
     <div class="row">
         <div class="col-12">
           <div class="card">
