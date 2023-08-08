@@ -146,18 +146,17 @@
     </div>
   </div>
 
-{{-- @if(Session::has("message"))
-  <script>
-    // window.addEventListener("ShowMessage", event =>{
-    //     Swal.fire({
-    //       position: 'top-end',
-    //       icon: 'success',
-    //       toast: true,
-    //       title: event.detail.message || "Operations effectuer avec succès !!",
-    //       showConfirmButton: false,
-    //       timer: 1500
-    //     })
-    // })
-    toastr.success("{{ Session::get('message') }}");
-  </script> --}}
-{{-- @endif --}}
+
+  {{-- <script>
+   window.addEventListener("ShowSuccessMessage", event =>{
+       Swal.fire({
+        //  position: 'top-end',
+        //  icon: 'success',
+        //  toast: true,
+        //  title: event.detail.message || "Operations effectuer avec succès !!",
+        //  showConfirmButton: false,
+        //   timer: 1500
+        console.log(event.detail.message);
+       })
+   })
+  </script>  --}}

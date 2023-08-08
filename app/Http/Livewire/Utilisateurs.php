@@ -11,9 +11,11 @@ use Illuminate\Console\View\Components\Alert;
 class Utilisateurs extends Component
 {
     use WithPagination;
+
     protected $paginationTheme = 'bootstrap';
 
     public $newUser = [];
+    public $editUser = [];
 
     protected $rules = [
         'newUser.nom' => 'required',
@@ -24,6 +26,7 @@ class Utilisateurs extends Component
         'newUser.sexe' => 'required',
         'newUser.numeroPieceIdentite' => 'required|unique:users,numeroPieceIdentite',
     ];
+    public $user_id;
 
     public function updated($propertyName)
     {
@@ -46,11 +49,25 @@ class Utilisateurs extends Component
         //Pour reinitiatiser 
         $this->newUser = [];
         
-    //   $this->dispatchBrowserEvent('ShowMessage', ['message' => 'Utilisateur ajouté avec succés']);  
+      $this->dispatchBrowserEvent("ShowSuccessMessage", ['message' => 'Utilisateur ajouté avec succés']);  
 
         toastr()->success("Utilisateur cree avec succés");
 
       return redirect()->route("admin.habilitations.users.index");
+    }
+
+    public function confirmDelete(int $id)
+    {
+        $this->user_id = $id;
+        
+    }
+
+    public function deleteUser()
+    {
+      User::where("id",$this->user_id)->delete();
+      toastr()->success("Utilisateur supprimer avec succés");
+      return redirect()->route("admin.habilitations.users.index");
+    //   $this->dispatchBrowserEvent("ShowSuccessMessage", ['message' => 'Utilisateur supprimé avec succés']);
     }
 
     public function render()
@@ -61,5 +78,4 @@ class Utilisateurs extends Component
         ->section("content");
     }
 
-   
 }

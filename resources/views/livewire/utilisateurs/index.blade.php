@@ -1,5 +1,8 @@
+
 <div>
     @include('livewire.utilisateurs.addUserModal')
+    @include('livewire.utilisateurs.deleteUserModal')
+    @include('livewire.utilisateurs.editUser')
     <div class="row">
         <div class="col-12">
           <div class="card">
@@ -33,7 +36,7 @@
 
                 <tbody>
                     @foreach ($users as $user )
-                        
+
                     <tr>
                         <td>
                             @if($user->sexe == "0")
@@ -46,12 +49,19 @@
                         <td>{{ $user->roles->implode("nom", "|") }}</td>
                         <td>{{ $user->created_at->diffForHumans() }}</td>
                         <td>
-                            <button class="btn btn-outline-primary "> <i class="fas fa-edit"></i> </button>
-                            <button class="btn btn-outline-danger"> <i class="fas fa-trash"></i> </button>
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                          data-target=".bd-example-modal-lg">
+                          <i class="fas fa-edit "></i>
+                        </button>
+                            <button type="button" class="btn btn-outline-danger mr-3" 
+                              wire:click='confirmDelete({{ $user->id }})' data-toggle="modal" data-target="#deleteUser">
+                              <i class="fas fa-trash "></i>
+                            </button>
                         </td>
                     </tr>
                  @endforeach
-                </tbody>       
+                </tbody>
                 </table>
               </div>
               <div class="card-footer">
@@ -63,5 +73,11 @@
           </div>
         </div>
       </div>
-    
+
 </div>
+
+{{-- <script>
+  window.addEventListener('ShowSuccessMessage', event => {
+      flash('Name ShowSuccessMessage to: ' + event.detail.message);
+  })
+  </script>> --}}
